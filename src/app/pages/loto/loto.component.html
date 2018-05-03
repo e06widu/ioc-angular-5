@@ -1,0 +1,316 @@
+<app-header (callback)="callbackHeaderMenuFunc($event)"></app-header>
+<div class="container">
+	<div class="row">
+		<div class="col-xl-12">
+			<div class="loto-page" [ngClass]="{'fix-width':!showMenuHeader}">
+				<div class="cover-title ver-y">
+					<img src="assets/i/symbols-icon-dark-history.png" alt="image">
+					<h2>loto</h2>
+					<span class="sub-title">{{txtCaregory}}</span>
+				</div>
+				<div class="cover-filter" *ngIf="dataFilter">
+					<div class="top-filter">
+						<div class="left-top-filter">
+							<div class="list-sort-filter">
+								<div class="group-input">
+									<div class="cover-input">
+										<span class="title-input">Keyword</span>
+										<div class="input-here">
+											<input type="search">
+										</div>
+										<!-- input here -->
+									</div>
+									<!-- cover input -->
+								</div>
+								<app-datepicker-range [data]="dataFilter"></app-datepicker-range>
+								<div class="group-input">
+									<a href="javascript:;" class="click-seach mix-xy">
+										<img src="assets/i/symbols-icon-blue-search.png" alt="image">
+										<img src="assets/i/symbols-icon-white-search.png" alt="image">
+									</a>
+									<!-- click seach -->
+									<a href="javascript:;" class="click-filter mix-xy" [ngClass]="{'active':showFilter}" (click)="showFilterFunc()">
+										<img src="assets/i/symbols-icon-blue-filter.png" alt="image">
+										<img src="assets/i/symbols-icon-blue-no-filters.png" alt="image">
+									</a>
+								</div>
+							</div>
+							<!-- list sort filter -->
+						</div>
+						<!-- left top filter -->
+						<div class="right-top-filter">
+							<div class="cover-action">
+								<span class="title-action">Actions</span>
+								<div class="action-box">
+									<a href="javascript:;" class="click-print mix-xy">
+										<img src="assets/i/symbols-icon-blue-print.png" alt="image">
+										<img src="assets/i/symbols-icon-white-print.png" alt="image">
+									</a>
+									<!-- click print -->
+									<a href="assets/MeetingSigninALS.XLS" class="click-excel mix-xy">
+										<img src="assets/i/symbols-icon-blue-excel.png" alt="image">
+										<img src="assets/i/symbols-icon-white-excel.png" alt="image">
+									</a>
+									<!-- click excel -->
+									<a href="javascript:;" class="click-add mix-xy" (click)="openModalAddNew()">
+										<img src="assets/i/symbols-icon-blue-new.png" alt="image">
+										<img src="assets/i/symbols-icon-white-new.png" alt="image">
+									</a>
+								</div>
+								<!-- action box -->
+							</div>
+							<!-- cover action -->
+							<div class="cover-view">
+								<span class="title-view">View Mode</span>
+								<div class="box-view">
+									<a href="javascript:;" class="click-day mix-xy">
+										<img src="assets/i/symbols-icon-grey-date.png" alt="image">
+										<img src="assets/i/symbols-icon-white-date.png" alt="image">
+									</a>
+									<a href="javascript:;" class="click-grid mix-xy active">
+										<img src="assets/i/symbols-icon-grey-grid.png" alt="image">
+										<img src="assets/i/symbols-icon-white-grid.png" alt="image">
+									</a>
+									<a href="javascript:;" class="click-list mix-xy">
+										<img src="assets/i/symbols-icon-grey-table.png" alt="image">
+										<img src="assets/i/symbols-icon-white-table.png" alt="image">
+									</a>
+								</div>
+								<!-- box view -->
+							</div>
+							<!-- cover view	 -->
+						</div>
+						<!-- right top filter -->
+					</div>
+					<!-- top filter -->
+					<div class="sub-filter" *ngIf="showFilter">
+						<ul class="list-sub-filter">
+								<li>
+									<div class="cover-input">
+										<span class="title-input">Group</span>
+										<div class="input-here">
+											<app-dropdown #dropdownEl [dropdownEls]="dropdownEls" [listDropdown]="dataFilter.group" [selectOption]="'Select'"></app-dropdown>
+										</div>
+										<!-- input here -->
+									</div>
+									<!-- cover input -->
+								</li>
+								<li>
+									<div class="cover-input">
+										<span class="title-input">Location</span>
+										<div class="input-here">
+											<app-dropdown #dropdownEl [dropdownEls]="dropdownEls" [listDropdown]="dataFilter.location" [selectOption]="'Select'"></app-dropdown>
+										</div>
+										<!-- input here -->
+									</div>
+									<!-- cover input -->
+								</li>
+								<li>
+									<div class="cover-input">
+										<span class="title-input">LOTO Date</span>
+										<app-datepicker-range [typeDate]="'normal'"></app-datepicker-range>
+									</div>
+									<!-- cover input -->
+								</li>
+								<li>
+									<div class="cover-input">
+										<span class="title-input">LOTO Operator</span>
+										<div class="input-here">
+											<app-dropdown #dropdownEl [dropdownEls]="dropdownEls" [listDropdown]="dataFilter.operator" [selectOption]="'Select'"></app-dropdown>
+										</div>
+										<!-- input here -->
+									</div>
+									<!-- cover input -->
+								</li>
+								<li class="reason">
+									<div class="cover-input ">
+										<span class="title-input">LOTO Reason</span>
+										<div class="input-here">
+											<input type="search">
+										</div>
+										<!-- input here -->
+									</div>
+									<!-- cover input -->
+								</li>
+						</ul>
+						<!-- list sort filter -->
+						<ul class="list-sub-filter">
+								<li>
+									<div class="cover-input">
+										<span class="title-input">Process Points</span>
+										<div class="input-here">
+											<input type="search">
+										</div>
+										<!-- input here -->
+									</div>
+									<!-- cover input -->
+								</li>
+								<li>
+									<div class="cover-input">
+										<span class="title-input">3rd Party Locks</span>
+										<div class="input-here">
+											<input type="search">
+										</div>
+										<!-- input here -->
+									</div>
+									<!-- cover input -->
+								</li>
+								<li>
+									<div class="cover-input">
+										<span class="title-input">LOTO Removed Date</span>
+										<app-datepicker-range [typeDate]="'normal'"></app-datepicker-range>
+									</div>
+									<!-- cover input -->
+								</li>
+								<li>
+									<div class="cover-input">
+										<span class="title-input">Remover</span>
+										<div class="input-here">
+											<app-dropdown #dropdownEl [listDropdown]="dataFilter.removed" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+										</div>
+										<!-- input here -->
+									</div>
+									<!-- cover input -->
+								</li>
+						</ul>
+						<!-- list sort filter -->
+					</div>	
+					<!-- sub filter -->
+				</div>
+				<!-- end/cover filter -->
+				<div class="cover-content">
+					<div class="grid-box">
+						<div class="top-grid-box">
+							<ul class="list-select" *ngIf="arrayListItems">
+								<li [ngClass]="{'active':txtCaregory ==='All'}">
+									<a href="javascript:;" (click)="selectTabMasonry('All')"></a>
+									<div class="cover-text">
+										<span class="number-list">{{arrayListItems | countArrayFilter : 'type' : 'All'}}</span>
+										<span class="title-select">all</span>
+									</div>
+									<!-- cover text -->
+								</li>
+								<li [ngClass]="{'active':txtCaregory ==='Current'}">
+									<a href="javascript:;" (click)="selectTabMasonry('Current')"></a>
+									<div class="cover-text">
+										<span class="number-list">{{arrayListItems | countArrayFilter : 'type' : 'Current'}}</span>
+										<span class="title-select">Current</span>
+									</div>
+								</li>
+								<li [ngClass]="{'active':txtCaregory ==='Historical'}">
+									<a href="javascript:;" (click)="selectTabMasonry('Historical')"></a>
+									<div class="cover-text">
+										<span class="number-list">{{arrayListItems | countArrayFilter : 'type' : 'Historical'}}</span>
+										<span class="title-select">Historical</span>
+									</div>
+									<!-- cover text									 -->
+								</li>
+							</ul>
+							<!-- list select -->
+						</div>
+						<!-- top grid -->
+						<div class="second-grid-box grid">
+							<div class="grid-item col-xl-4" *ngFor="let item of pagedItems">
+								<p class="top-title">
+									<img src="assets/i/symbols-icon-dark-history.png" alt="image">
+									<span class="name-title">LOTO Item Name</span>
+								</p>			
+								<p class="blur-title">
+									<span>Group</span>	
+									<i>Location</i>
+								</p>
+								<!-- blur title -->
+								<p class="text-sub-name">
+									<span>{{item.group}}</span>
+									<i>{{item.location}}</i>
+								</p>
+								<!-- text sub name -->
+								<p class="blur-title">
+									<span>LOTO Date</span>	
+									<i>LOTO Operator</i>
+								</p>
+								<!-- blur title -->
+								<p class="text-sub-name">
+									<span>{{item.date | date: 'MM/dd/yyyy'}}</span>
+									<i>{{item.operator}}</i>
+								</p>
+								<!-- text sub name -->
+								<p class="blur-title">
+									<span>LOTO Reason</span>	
+								</p>
+								<!-- blur title -->
+								<p class="text-sub-name">
+									<span class="text-sub">{{item.reason}}</span>
+								</p>
+								<!-- text sub name -->
+								<p class="blur-title">
+									<span>Value / Process Points</span>	
+								</p>
+								<!-- blur title -->
+								<p class="text-sub-name">
+									<span class="text-sub">{{item.processPoints}}</span>
+								</p>
+								<!-- text sub name -->
+								<p class="blur-title">
+									<span>3rd Party Locks</span>	
+								</p>
+								<!-- blur title -->
+								<p class="text-sub-name">
+									<span class="text-sub">{{item.partyLocks}}</span>
+								</p>
+								<!-- text sub name -->
+								<p class="blur-title">
+									<span>LOTO Removed Date</span>	
+									<i>Removed by</i>
+								</p>
+								<!-- blur title -->
+								<p class="text-sub-name">
+									<span>{{item.removedDate}}</span>
+									<i>{{item.removedBy}}</i>
+								</p>
+								<a href="javascript:;" class="click-edit" (click)="openModalEdit()">
+									<img src="assets/i/symbols-icon-grey-edit.png" alt="image">
+								</a>
+							</div>
+							<!-- grid item -->
+						</div>
+						<!-- second grid box -->
+						<div class="big-group-four">
+							<div class="left-group ver-y">
+								<div class="ddown-here" *ngIf="dataFilter">
+									<app-dropdown #dropdownEl [listDropdown]="dataFilter.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)" [dropdownEls]="dropdownEls"></app-dropdown>
+								</div>
+								<p>Items / Page</p>
+							</div>
+							<!-- end /left-group -->
+							<div class="right-group" *ngIf="arrayFilter">
+								<p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+								<div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+									<a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+										<img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+									</a>
+									<a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+										<img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+									</a>
+									<a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+										<img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+									</a>
+									<a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+										<img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+									</a>
+								</div>
+								<!-- end /list-icons -->
+							</div>
+							<!-- end /right-group -->
+						</div>
+						<!-- end /big-group-four -->
+					</div>
+				</div>
+				<!-- end/cover content -->
+			</div>
+			<!-- end /loto-page -->
+		</div>
+	</div>
+</div>
+<!-- end /container -->
+<app-left-aside *ngIf="!showMenuHeader"></app-left-aside>

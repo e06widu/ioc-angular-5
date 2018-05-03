@@ -1,0 +1,126 @@
+<div class="popup-new-action" appSetHeightModal>
+	<div class="top-p-action ver-y">
+		<img src="assets/i/symbols-icon-dark-new.png" alt="image">
+		<h2>New Action Item</h2>
+	</div>
+	<!-- top p add -->
+	<div class="action-type">
+		<span class="title-action-type">Action Type</span>
+		<ul>
+			<li class="active">
+				<a href="javascript:;">PHA</a>
+			</li>
+			<li>
+				<a href="javascript:;">PSSR</a>
+			</li>
+			<li>
+				<a href="javascript:;">Cause Map</a>
+			</li>
+			<li>
+				<a href="javascript:;">CEM</a>
+			</li>
+			<li>
+				<a href="javascript:;">Incident Review</a>
+			</li>
+			<li>
+				<a href="javascript:;">PSM Audit</a>
+			</li>
+		</ul>
+	</div>
+	<!-- action type -->
+	<ul class="list-add" *ngIf="dataActionPopup">
+		<li>
+			<div class="cover-input">
+				<span class="title-input">General Action Item</span>
+				<div class="input-here">
+					<app-dropdown #dropdownEl [dropdownEls]="dropdownEls" [listDropdown]="dataActionPopup.generalActionItem" [selectOption]="'Select'"></app-dropdown>
+				</div>
+				<!-- input here -->
+			</div>
+			<!-- cover input -->
+		</li>
+		<li>
+			<div class="cover-input">
+				<span class="title-input">Action Item / Recommendation</span>
+				<div class="input-here">
+					<input type="text">
+				</div>
+				<!-- input here -->
+			</div>
+			<!-- cover input -->
+		</li>
+		<li>
+			<div class="cover-input">
+				<span class="title-input">Cause</span>
+				<div class="input-here">
+					<input type="text">
+				</div>
+				<!-- input here -->
+			</div>
+			<!-- cover input -->
+		</li>
+		<li>
+			<div class="cover-input">
+				<span class="title-input">Safestart / Critical Error</span>
+				<div class="input-here">
+					<input type="text">
+				</div>
+				<!-- input here -->
+			</div>
+			<!-- cover input -->
+		</li>
+		<li>
+			<div class="cover-input">
+				<span class="title-input">Process Safety Element</span>
+				<div class="input-here">
+					<textarea></textarea>
+				</div>
+				<!-- input here -->
+			</div>
+			<!-- cover input -->
+		</li>
+		<li>
+			<div class="cover-input">
+				<span class="title-input">Due Date</span>
+				<app-datepicker-range [typeDate]="'normal'"></app-datepicker-range>
+			</div>
+			<!-- cover input -->
+		</li>
+		<li>
+			<div class="cover-input">
+				<span class="title-input">Assignee</span>
+				<div class="input-here">
+					<app-dropdown #dropdownEl [dropdownEls]="dropdownEls" [listDropdown]="dataActionPopup.assignee" (callbaclSelectDropdown)="callbackDropdownItemFunc($event)" [selectOption]="'Select'"></app-dropdown>
+				</div>
+				<!-- input here -->
+			</div>
+			<!-- cover input -->
+		</li>
+		<li>
+			<a href="javascript:;" class="click-add mix-xy" (click)="addNamePeopleFunc()">
+				<img src="assets/i/symbols-icon-blue-new.png" alt="image">
+				<img src="assets/i/symbols-icon-white-new.png" alt="image">
+			</a>
+		</li>
+	</ul>
+	<div class="box-add">
+		<ul class="list-box-add">
+			<li *ngFor="let item of arrayPeople; let i = index">
+				<span class="name-add">{{item.name}}</span>
+				<a href="javascript:;" (click)="deleteItemFunc(i)">
+					<img src="assets/i/symbols-icon-white-close.png" alt="image">
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- box add -->
+	<div class="cover-select">
+		<a href="javascript:;" class="btn-submit mix-xy" (click)="bsModalRef.hide()">submit</a>
+		<a href="javascript:;" class="btn-cancel mix-xy" (click)="bsModalRef.hide()">cancel</a>
+	</div>
+	<!-- cover select -->
+	<a href="javascript:;" class="click-close mix-xy" (click)="bsModalRef.hide()">
+		<img src="assets/i/symbols-close.png" alt="image">
+	</a>
+</div>
+<!-- popup new action -->

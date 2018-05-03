@@ -1,0 +1,165 @@
+header {
+	width: 100%;
+	height: 80px;
+	background-color: #fff;
+	border-bottom: 1px solid #e5e5e5;
+  &:after {
+  	content: '';
+  	display: block;
+  	clear: both;
+  }
+  // left header
+  .left-header {
+  	height: 100%;
+  	float: left;
+  	// click menu
+  	.click-menu {
+  		float: left;
+			width: 80px;
+			height: 100%;
+			border-right: 1px solid #e5e5e5;
+			.one {
+				display: block;
+				width: 24px;
+			}
+			.two {
+				display: none;
+				width: 24px;
+			}
+			.three {
+				display: none;
+				width: 24px;
+			}
+			&:hover {
+				background-color: #3B7CFF;
+				.one {
+					display: none;
+				}
+				.two {
+					display: none;
+				}
+				.three {
+					display: block;
+				}
+			}
+			&.active {
+				background-color: #3B7CFF;
+				.one {
+					display: none;
+				}
+				.two {
+					display: none;
+				}
+				.three {
+					display: block;
+				}
+			}
+			&.fix-width {
+				width: 120px;
+				.one {
+					display: none;
+				}
+				.two {
+					display: block;
+				}
+				.three {
+					display: none;
+				}
+				&:hover {
+					.one {
+					display: none;
+					}
+					.two {
+						display: none;
+					}
+					.three {
+						display: block;
+					}
+				}
+				&.active {
+					.one {
+					display: none;
+					}
+					.two {
+						display: none;
+					}
+					.three {
+						display: block;
+					}
+				}
+			}
+  	}
+  	.click-logo {
+  		float: left;
+  		height: 100%;
+  		margin-left: 40px;
+  		img {
+  			display: block;
+  			width: 50px; 
+  			height: auto;
+  		}
+  	}
+  }
+  .right-header {
+  	float: right;
+  	height: 100%;
+  	padding-right: 40px;
+  	.box-user {
+  		float: right;
+  		height: 100%;
+			.click-name {
+				img {
+					display: block;
+					width: 20px;
+					height: auto;
+					position: relative;
+					top: 2px;
+				}
+				.name-user {
+					display: block;
+					padding: 0 5px 0 12px;
+					font-size: 14px;
+					color: #3B4859;
+					text-transform: capitalize;
+				}
+				&:hover {
+					.name-user {
+						color: #3B7CFF;
+					}
+				}
+			}
+			.cover-image {
+				height: 100%;
+				overflow: hidden;
+				img {
+					display: block;
+					width: 30px;
+					height: auto;
+					border-radius: 50%;
+				}
+			}
+  	}
+  	.box-noti {
+  		float: right;
+  		height: 100%;
+  		margin-right: 39px;
+  		.click-noti {
+  			img {
+  				display: block;
+  				width: 24px;
+  				height: auto;
+  			}
+  		}
+  	}
+  	.box-email {
+  		float: right;
+  		height: 100%;
+  		margin-right: 39px;
+  		img {
+  			display: block;
+  			width: 24px;
+  			height: auto;
+  		}
+  	}
+  }
+}

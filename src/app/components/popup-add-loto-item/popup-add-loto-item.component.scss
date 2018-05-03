@@ -1,0 +1,162 @@
+// popup add
+.popup-add {
+	width: 600px;
+	height: 468px;
+	padding: 0 40px;
+	border: 1px solid #E5E5E5;
+	box-shadow: 0 10px 20px 0 rgba(0,0,0,0.30);
+	border-radius: 8px;
+	background-color: #fff;
+	position: absolute;
+	top: 286px;
+	left: calc(50% - 300px);
+	z-index: 501;
+	// top p add
+	.top-p-add {
+		height: 112px;
+		img {
+			display: block;
+			width: 24px;
+			height: auto;
+			margin-right: 21px;
+		}
+		h2 {
+			font-size: 24px;
+			color: #4B5B6C;
+		}
+	}
+	// list add
+	.list-add {
+		width: 100%;
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		li {
+			float: left;
+			width: calc(50% - 5px);
+			margin-bottom: 22px;
+			&:nth-child(even) {
+				margin-left: 10px;
+			}
+			// cover input
+			.cover-input {
+				.title-input {
+					display: block;
+					padding-bottom: 12px;
+					font-size: 12px;
+					font-weight: bold;
+					color: #97A6BB;
+					text-transform: uppercase;
+				}
+				.input-here {
+					width: 255px;
+					height: 40px;
+					border: 1px solid #CCCFD4;
+					border-radius: 4px;
+					position: relative;
+					input {
+						width: 100%;
+						height: 100%;
+						padding: 0 10px 0 14px; 
+						color: #3B4859;
+					  font-size: 14px;
+					  border: none;
+					  outline: none;
+					  background: transparent;
+					  margin: 0;
+					  &:focus::-webkit-input-placeholder {
+					    color: transparent;
+					  }
+					  &:focus:-moz-placeholder {
+					    color: transparent;
+					  }
+					  &:focus::-moz-placeholder {
+					    color: transparent;
+					  }
+					  &:focus:-ms-input-placeholder {
+					    color: transparent;
+					  }
+					}
+					.click-day {
+						width: 28px;
+						height: 100%;
+						position: absolute;
+						top: 0;
+						right: 0;
+						img {
+							display: block;
+							width: 24px;
+							height: auto;
+						}
+					}
+				}
+			}
+		}
+	}
+	.cover-select {
+		width: 100%;
+		padding-top: 18px;
+		&:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.btn-submit {
+			float: left;
+			width: calc(50% - 5px);
+			height: 40px;
+			font-size: 13px;
+			font-weight: bold;
+			color: #3B7CFF;
+			border: 1px solid #3B7CFF;
+			border-radius: 4px;
+			text-transform: uppercase;
+			&:hover {
+				border: none;
+				color: #fff;
+				background-color: #3B7CFF;
+			}
+		}
+		.btn-cancel {
+			float: right;
+			width: calc(50% - 5px);
+			height: 40px;
+			font-size: 13px;
+			font-weight: bold;
+			color: #3B7CFF;
+			border: 1px solid #3B7CFF;
+			border-radius: 4px;
+			text-transform: uppercase;
+			&:hover {
+				border: none;
+				color: #fff;
+				background-color: #3B7CFF;
+			}
+		}
+	}
+	.click-close {
+		width: 36px;
+		height: 36px;
+		position: absolute;
+		top: -18px;
+		right: -18px;
+		img {
+			display: block;
+			width: 36px;
+			height: auto;
+			border-radius: 50%;
+		}
+	}
+}
+
+::ng-deep .modal {
+	.modal-dialog {
+		max-width: 0;
+		margin: 0 auto;
+		.modal-content {
+			border: none;
+		}
+	}
+}

@@ -1,0 +1,72 @@
+<div class="popup-add" appSetHeightModal>
+  <div class="top-p-add ver-y">
+    <img src="assets/i/symbols-icon-dark-new.png" alt="image">
+    <h2>New LOTO Item</h2>
+  </div>
+  <!-- top p add -->
+  <ul class="list-add" *ngIf="dataFilter">
+    <li>
+      <div class="cover-input">
+        <span class="title-input">Group</span>
+        <div class="input-here">
+          <app-dropdown #dropdownEl [dropdownEls]="dropdownEls" [listDropdown]="dataFilter.group" [selectOption]="'Select'"></app-dropdown>
+        </div>
+        <!-- input here -->
+      </div>
+      <!-- cover input -->
+    </li>
+    <li>
+      <div class="cover-input">
+        <span class="title-input">Location</span>
+        <div class="input-here">
+          <input type="text">
+        </div>
+        <!-- input here -->
+      </div>
+      <!-- cover input -->
+    </li>
+    <li>
+      <div class="cover-input">
+        <span class="title-input">LOTO Date</span>
+        <app-datepicker-range [typeDate]="'normal'"></app-datepicker-range>
+      </div>
+      <!-- cover input -->
+    </li>
+    <li>
+      <div class="cover-input">
+        <span class="title-input">LOTO Reason</span>
+        <div class="input-here day">
+          <input type="text">
+        </div>
+        <!-- input here -->
+      </div>
+      <!-- cover input -->
+    </li>
+    <li>
+      <div class="cover-input">
+        <span class="title-input">LOTO Operator</span>
+        <div class="input-here day">
+          <app-dropdown  #dropdownEl [dropdownEls]="dropdownEls"[listDropdown]="dataFilter.operator" [selectOption]="'Select'"></app-dropdown>
+        </div>
+        <!-- input here -->
+      </div>
+      <!-- cover input -->
+    </li>
+    <li>
+      <div class="cover-input">
+        <span class="title-input">LOTO Removed</span>
+        <app-datepicker-range [typeDate]="'normal'"></app-datepicker-range>
+      </div>
+      <!-- cover input -->
+    </li>
+  </ul>
+  <div class="cover-select">
+    <a href="javascript:;" class="btn-submit mix-xy" (click)="bsModalRef.hide()">submit</a>
+    <a href="javascript:;" class="btn-cancel mix-xy" (click)="bsModalRef.hide()">cancel</a>
+  </div>
+  <!-- cover select -->
+  <a href="javascript:;" class="click-close mix-xy" (click)="bsModalRef.hide()">
+    <img src="assets/i/symbols-close.png" alt="image">
+  </a>
+</div>
+<!-- popup add -->

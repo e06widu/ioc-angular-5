@@ -1,0 +1,109 @@
+{
+  "startDate":"01/26/2018",
+  "endDate":"02/26/2018",
+  "group":[
+    {
+      "name":"Group Name 1"
+    },
+    {
+      "name":"Group Name 2"
+    },
+    {
+      "name":"Group Name 3"
+    },
+    {
+      "name":"Group Name 4"
+    },
+    {
+      "name":"Group Name 5"
+    }
+  ],
+  "location":[
+    {
+      "name":"Location Name 1"
+    },
+    {
+      "name":"Location Name 2"
+    },
+    {
+      "name":"Location Name 3"
+    },
+    {
+      "name":"Location Name 4"
+    },
+    {
+      "name":"Location Name 5"
+    },
+    {
+      "name":"Location Name 6"
+    },
+    {
+      "name":"Location Name 7"
+    },
+    {
+      "name":"Location Name 8"
+    },
+    {
+      "name":"Location Name 9"
+    },
+    {
+      "name":"Location Name 10"
+    },
+    {
+      "name":"Location Name 11"
+    },
+    {
+      "name":"Location Name 12"
+    }
+  ],
+  "lotoDate":" 03/05/2018",
+  "operator":[
+    {
+      "name":"Michael Tyler"
+    },
+    {
+      "name":"Janelle Smith"
+    },
+    {
+      "name":"Lorem ipsum"
+    },
+    {
+      "name":"Lorem ipsum"
+    }
+  ],
+  "lotoRemovedDate":"03/06/2018",
+  "removed":[
+    {
+      "name":"Arlene Clark"
+    },
+    {
+      "name":"Lorem ipsum"
+    },
+    {
+      "name":"Lorem ipsum"
+    },
+    {
+      "name":"Lorem ipsum"
+    },
+    {
+      "name":"Lorem ipsum"
+    }
+  ],
+  "numberPages":[
+    {
+      "name": 3
+    },
+    {
+      "name": 6
+    },
+    {
+      "name": 9
+    },
+    {
+      "name": 12
+    },
+    {
+      "name": 15
+    }
+  ]
+}

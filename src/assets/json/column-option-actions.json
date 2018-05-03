@@ -1,0 +1,156 @@
+{
+  "All": [
+    {
+      "name": "Type",
+      "isCheck": true
+    },
+    {
+      "name": "Title",
+      "isCheck": true
+    },
+    {
+      "name": "MOC #",
+      "isCheck": true
+    },
+    {
+      "name": "Action Item",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned By",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned To",
+      "isCheck": true
+    },
+    {
+      "name": "Due Date",
+      "isCheck": true
+    },
+    {
+      "name": "Completed",
+      "isCheck": true
+    }
+  ],
+  "Cause Map":[
+    {
+      "name": "Incident Title",
+      "isCheck": true
+    },
+    {
+      "name": "Action Item",
+      "isCheck": true
+    },
+    {
+      "name": "Safestart / Critical Error",
+      "isCheck": true
+    },
+    {
+      "name": "Process Safety Element",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned By",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned To",
+      "isCheck": true
+    },
+    {
+      "name": "Due Date",
+      "isCheck": true
+    }
+  ],
+  "Cem":[
+    {
+      "name": "Incident Title",
+      "isCheck": true
+    },
+    {
+      "name": "Action Item",
+      "isCheck": true
+    },
+    {
+      "name": "Associated Plans",
+      "isCheck": true
+    },
+    {
+      "name": "Concerns",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned By",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned To",
+      "isCheck": true
+    },
+    {
+      "name": "Due Date",
+      "isCheck": true
+    }
+  ],
+  "Incident Review":[
+    {
+      "name": "Incident Title",
+      "isCheck": true
+    },
+    {
+      "name": "Action Item",
+      "isCheck": true
+    },
+    {
+      "name": "Safestart / Critical Error",
+      "isCheck": true
+    },
+    {
+      "name": "Process Safety Element",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned By",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned To",
+      "isCheck": true
+    },
+    {
+      "name": "Due Date",
+      "isCheck": true
+    }
+  ],
+  "PSM Audit":[
+    {
+      "name": "PSM Audit",
+      "isCheck": true
+    },
+    {
+      "name": "Action Item",
+      "isCheck": true
+    },
+    {
+      "name": "Safestart / Critical Error",
+      "isCheck": true
+    },
+    {
+      "name": "Process Safety Element",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned By",
+      "isCheck": true
+    },
+    {
+      "name": "Assigned To",
+      "isCheck": true
+    },
+    {
+      "name": "Due Date",
+      "isCheck": true
+    }
+  ]
+}

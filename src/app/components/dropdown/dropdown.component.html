@@ -1,0 +1,16 @@
+<div #contentDropdown class="group-dropdown" [ngClass]="{'number-pages': type === 'number', 'show-dropdown':showDropdown}">
+  <a href="javascript:;" class="box-text ver-y" (click)="$event.stopPropagation();showDropdownFunc($event)">
+    <span class="title">{{selectOption}}</span>
+    <span class="icons-down"></span>
+  </a>
+  <!-- end box-text -->
+  <div class="list-dropdown">
+    <ul>
+      <li *ngFor="let item of listDropdown; let i = index">
+        <a href="javascript:;" class="text" (click)="selectItem(item, $event)">{{item.name}}</a>
+      </li>
+    </ul>
+  </div>
+  <!-- end list-dropdown -->
+</div>
+<!-- end group-dropdown -->

@@ -1,0 +1,21 @@
+<div class="popup-edit" appSetHeightModal>
+  <div class="top-p-edit ver-y">
+    <img src="assets/i/symbols-icon-dark-edit.png" alt="image">
+    <h2>Edit LOTO Item</h2>
+  </div>
+  <!-- top p edit -->
+  <div class="cover-input">
+    <span class="title-input">LOTO Removed</span>
+    <app-datepicker-range [typeDate]="'normal'"></app-datepicker-range>
+  </div>
+  <!-- cover input -->
+  <div class="cover-select">
+    <a href="javascript:;" class="btn-submit mix-xy" (click)="bsModalRef.hide()">submit</a>
+    <a href="javascript:;" class="btn-cancel mix-xy" (click)="bsModalRef.hide()">cancel</a>
+  </div>
+  <!-- cover select -->
+  <a href="javascript:;" class="click-close mix-xy" (click)="bsModalRef.hide()">
+    <img src="assets/i/symbols-close.png" alt="image">
+  </a>
+</div>
+<!-- popup edit -->

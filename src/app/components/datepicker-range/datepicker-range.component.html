@@ -1,0 +1,40 @@
+<div class="group-datepicker-range" *ngIf="typeDate === 'range'">
+  <div class="group-input">
+    <div class="cover-input">
+      <span class="title-input">Start Date</span>
+      <div class="input-here day" (click)="$event.stopPropagation();dStart.toggle(); dEnd.hide()">
+        <input type="text" placeholder="Start Date" #dStart="bsDatepicker" bsDatepicker [(bsValue)]="startDateFilter" (bsValueChange)="changeStartFunc(dStart)"
+        placement="bottom left" value="{{ startDateFilter | date:'MM/dd/yyyy' }}" [bsConfig]="bsConfig"
+          disabled >
+        <a href="javascript:;" class="click-day ver-y">
+          <img src="assets/i/symbols-icon-grey-date.png" alt="image">
+        </a>
+      </div>
+      <!-- input here -->
+    </div>
+    <!-- cover input -->
+  </div>
+  <div class="group-input">
+    <div class="cover-input">
+      <span class="title-input">End Date</span>
+      <div class="input-here day" (click)="$event.stopPropagation();dEnd.toggle(); dStart.hide()">
+        <input type="text" placeholder="End Date" #dEnd="bsDatepicker" bsDatepicker [(bsValue)]="endDateFilter" (bsValueChange)="changeEndFunc(dEnd)"
+          [minDate]="startDateFilter" placement="bottom left" value="{{ endDateFilter | date:'MM/dd/yyyy' }}"
+          [bsConfig]="bsConfig" disabled>
+        <a href="javascript:;" class="click-day ver-y">
+          <img src="assets/i/symbols-icon-grey-date.png" alt="image">
+        </a>
+      </div>
+      <!-- input here -->
+    </div>
+    <!-- cover input -->
+  </div>
+</div>
+
+<div class="input-here day" *ngIf="typeDate === 'normal'">
+  <input type="text" bsDatepicker #db="bsDatepicker" placement="bottom left" [bsConfig]="bsConfig" [(bsValue)]="today" disabled>
+  <a href="javascript:;" class="click-day ver-y" (click)="db.toggle()">
+    <img src="assets/i/symbols-icon-grey-date.png" alt="image">
+  </a>
+</div>
+<!-- input here -->

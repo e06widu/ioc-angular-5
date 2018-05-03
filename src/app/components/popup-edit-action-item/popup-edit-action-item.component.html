@@ -1,0 +1,59 @@
+<div class="popup-edit-action" appSetHeightModal>
+  <div class="top-p-action ver-y">
+    <img src="assets/i/symbols-icon-dark-new.png" alt="image">
+    <h2>Edit Action Item</h2>
+  </div>
+  <!-- top p add -->
+  <ul class="list-add" *ngIf="dataActionPopup">
+    <li>
+      <div class="cover-input">
+        <span class="title-input">Process Safety Element</span>
+        <app-datepicker-range [typeDate]="'normal'"></app-datepicker-range>
+      </div>
+      <!-- cover input -->
+    </li>
+    <li>
+      <div class="cover-input">
+        <span class="title-input">Due Date</span>
+        <app-datepicker-range [typeDate]="'normal'"></app-datepicker-range>
+      </div>
+      <!-- cover input -->
+    </li>
+    <li>
+      <div class="cover-input">
+        <span class="title-input">Completed</span>
+        <div class="input-here">
+          <app-dropdown #dropdownEl [dropdownEls]="dropdownEls" [listDropdown]="dataActionPopup.completed" (callbaclSelectDropdown)="callbackDropdownItemFunc($event)" [selectOption]="'Select'"></app-dropdown>
+        </div>
+        <!-- input here -->
+      </div>
+      <!-- cover input -->
+    </li>
+    <li>
+      <a href="javascript:;" class="click-add mix-xy" (click)="addNamePeopleFunc()">
+        <img src="assets/i/symbols-icon-blue-new.png" alt="image">
+        <img src="assets/i/symbols-icon-white-new.png" alt="image">
+      </a>
+    </li>
+  </ul>
+  <div class="box-add">
+    <ul class="list-box-add">
+      <li *ngFor="let item of arrayPeople; let i = index">
+        <span class="name-add">{{item.name}}</span>
+        <a href="javascript:;" (click)="deleteItemFunc(i)">
+          <img src="assets/i/symbols-icon-white-close.png" alt="image">
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- box add -->
+  <div class="cover-select">
+    <a href="javascript:;" class="btn-submit mix-xy" (click)="bsModalRef.hide()">submit</a>
+    <a href="javascript:;" class="btn-cancel mix-xy" (click)="bsModalRef.hide()">cancel</a>
+  </div>
+  <!-- cover select -->
+  <a href="javascript:;" class="click-close mix-xy" (click)="bsModalRef.hide()">
+    <img src="assets/i/symbols-close.png" alt="image">
+  </a>
+</div>
+<!-- popup new action -->

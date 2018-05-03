@@ -1,0 +1,154 @@
+
+// Multi Group
+.multi-group {
+	width: 120px;
+	border-right: 1px solid #e5e5e5;
+	background: #fff;
+	position: absolute;
+	top: 80px;
+	left: 0;
+	// First Floor
+	.first-floor {
+		width: 120px;
+		position: relative;
+		>li {
+			width: 120px;
+			position: relative;
+			&.active {
+				.top-content {
+					img {
+						&.grey-arrow {
+							display: none;
+						}
+						&.blue-arrow {
+							display: block;
+						}
+					}
+				}
+				.bottom-content {
+					display: block;
+				}
+				&.current {
+					.top-content {
+						border: 0;
+						background: #3b4859;
+						.title {
+							color: #fff;
+						}
+					}
+					.bottom-content {
+						.second-floor {
+							li {
+								background: #ebf1ff;
+								img:nth-of-type(1) {
+									display: block;
+								}
+								img:nth-of-type(2) {
+									display: none;
+								}
+								&.blue-box {
+									border: 0;
+									background: #3979fa;
+									img:nth-of-type(1) {
+										display: none;
+									}
+									img:nth-of-type(2) {
+										display: block;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			/// Top Content
+			.top-content {
+				height: 40px;
+				border-bottom: 1px solid #e5e5e5;
+				position: relative;
+				&:hover {
+					border: 0;
+					cursor: pointer;
+					background: #3b4859;
+					.title {
+						color: #fff;
+					}
+					img {
+						&.grey-arrow {
+							display: none;
+						}
+						&.blue-arrow {
+							display: block;
+						}
+					}
+				}
+				.title {
+					display: block;
+					line-height: 16px;
+					font-size: 12px;
+					color: #3B4859;
+					text-transform: uppercase;
+					position: relative;
+					left: 11px;
+				}
+				.big-hand {
+					display: block;
+					width: 100%;
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 10;
+				}
+				img {
+					width: 24px;
+					height: auto;
+					position: absolute;
+					top: 7px;
+					right: 10px;
+					&.grey-arrow {
+						display: block;
+					}
+					&.blue-arrow {
+						display: none;
+					}
+				}
+			}
+			/// Bottom Content
+			.bottom-content {
+				display: none;
+				position: relative;
+				.second-floor {
+					width: 120px;
+					float: left;
+					position: relative;
+					li {
+						width: 60px;
+						height: 60px;
+						float: left;
+						border-right: 1px solid #e5e5e5;
+						border-bottom: 1px solid #e5e5e5;
+						position: relative;
+						&:nth-child(even) {
+							border-right-color: transparent;
+						}
+						img {
+							display: block;
+							width: 24px;
+							height: auto;
+						}
+						.big-hand {
+							display: block;
+							width: 100%;
+							height: 100%;
+							position: absolute;
+							top: 0;
+							left: 0;
+							z-index: 10;
+						}
+					}
+				}
+			}
+		}
+	}
+}

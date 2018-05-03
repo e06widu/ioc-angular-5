@@ -1,0 +1,26 @@
+[
+  {
+    "name":"ID",
+    "isCheck": true
+  },
+  {
+    "name":"Name",
+    "isCheck": true
+  },
+  {
+    "name":"Leader",
+    "isCheck": true
+  },
+  {
+    "name":"Date",
+    "isCheck": true
+  },
+  {
+    "name":"Notes",
+    "isCheck": true
+  },
+  {
+    "name":"Attendees",
+    "isCheck": true
+  }
+]

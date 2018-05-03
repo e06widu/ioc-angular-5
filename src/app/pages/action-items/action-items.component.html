@@ -1,0 +1,1762 @@
+<app-header (callback)="callbackHeaderMenuFunc($event)"></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="action-page" [ngClass]="{'fix-width':!showMenuHeader}">
+        <div class="top-content ver-y">
+          <img src="assets/i/symbols-icon-dark-action.png" alt="IMG">
+          <p>Action Items / {{txtCaregory}}</p>
+        </div>
+        <!-- end /top-content -->
+        <div class="bottom-content">
+          <div class="big-group-one">
+            <div class="cover-filter">
+              <div class="top-filter">
+                <div class="left-top-filter">
+                  <div class="list-sort-filter">
+                    <div class="group-input">
+                      <div class="cover-input">
+                        <span class="title-input">Keyword</span>
+                        <div class="input-here">
+                          <input type="search">
+                        </div>
+                        <!-- input here -->
+                      </div>
+                      <!-- cover input -->
+                    </div>
+                    <app-datepicker-range></app-datepicker-range>
+                    <div class="group-input">
+                      <a href="javascript:;" class="click-seach mix-xy">
+                        <img src="assets/i/symbols-icon-blue-search.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-search.png" alt="image">
+                      </a>
+                      <!-- click seach -->
+                      <a href="javascript:;" class="click-filter mix-xy" [ngClass]="{'active':showFilter}" (click)="showFilterFunc()">
+                        <img src="assets/i/symbols-icon-blue-filter.png" alt="image">
+                        <img src="assets/i/symbols-icon-blue-no-filters.png" alt="image">
+                      </a>
+                    </div>
+                  </div>
+                  <!-- list sort filter -->
+                </div>
+                <!-- left top filter -->
+                <div class="right-top-filter">
+                  <div class="cover-action">
+                    <span class="title-action">Actions</span>
+                    <div class="action-box">
+                      <a href="javascript:;" class="click-print mix-xy">
+                        <img src="assets/i/symbols-icon-blue-print.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-print.png" alt="image">
+                      </a>
+                      <!-- click print -->
+                      <a href="assets/MeetingSigninALS.XLS" class="click-excel mix-xy">
+                        <img src="assets/i/symbols-icon-blue-excel.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-excel.png" alt="image">
+                      </a>
+                      <!-- click excel -->
+                      <a href="javascript:;" class="click-add mix-xy" (click)="openModalAddNew()">
+                        <img src="assets/i/symbols-icon-blue-new.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-new.png" alt="image">
+                      </a>
+                    </div>
+                    <!-- action box -->
+                  </div>
+                  <!-- cover action -->
+                  <div class="cover-view">
+                    <span class="title-view">View Mode</span>
+                    <div class="box-view">
+                      <a href="javascript:;" class="click-day mix-xy">
+                        <img src="assets/i/symbols-icon-grey-date.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-date.png" alt="image">
+                      </a>
+                      <a href="javascript:;" class="click-grid mix-xy">
+                        <img src="assets/i/symbols-icon-grey-grid.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-grid.png" alt="image">
+                      </a>
+                      <a href="javascript:;" class="click-list mix-xy active">
+                        <img src="assets/i/symbols-icon-grey-table.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-table.png" alt="image">
+                      </a>
+                    </div>
+                    <!-- box view -->
+                  </div>
+                  <!-- cover view	 -->
+                </div>
+                <!-- right top filter -->
+              </div>
+              <!-- top filter -->
+              <div class="action-filter cause-map" *ngIf="showFilter && txtCaregory === 'Cause Map'">
+                <ul class="list-action-filter" *ngIf="dataFilterAction">
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Assignee</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.assigned" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Incident Title</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.incidentTitle" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Action Item</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Cause</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li class="process">
+                    <div class="cover-input">
+                      <span class="title-input">Safestart / Critical Error</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li class="process">
+                    <div class="cover-input">
+                      <span class="title-input">Process Safety Element</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                </ul>
+                <!-- list action filter -->
+              </div>
+              <!-- action filter -->
+              <div class="action-filter cem-tab" *ngIf="showFilter && txtCaregory === 'CEM'">
+                <ul class="list-action-filter" *ngIf="dataFilterAction">
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Assignee</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.assigned" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Incident Title</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.incidentTitle" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Status</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.status" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Action Item</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li class="process">
+                    <div class="cover-input">
+                      <span class="title-input">Associated Plans</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li class="process">
+                    <div class="cover-input">
+                      <span class="title-input">Concerns</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                </ul>
+                <!-- list action filter -->
+              </div>
+              <!-- action filter -->
+              <div class="action-filter incident-review" *ngIf="showFilter && txtCaregory === 'Incident Review'">
+                <ul class="list-action-filter" *ngIf="dataFilterAction">
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Assignee</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.assigned" [selectOption]="'Select'" [dropdownEls]="dropdownEls">></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Incident Title</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.psmAudit" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Action Item</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Cause</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li class="process">
+                    <div class="cover-input">
+                      <span class="title-input">Safestart / Critical Error</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li class="process">
+                    <div class="cover-input">
+                      <span class="title-input">Process Safety Element</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                </ul>
+                <!-- list action filter -->
+              </div>
+              <!-- action filter -->
+              <div class="action-filter psm-audit" *ngIf="showFilter && txtCaregory === 'PSM Audit'">
+                <ul class="list-action-filter" *ngIf="dataFilterAction">
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Assignee</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.assigned" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">PSM Audit</span>
+                      <div class="input-here">
+                        <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.psmAudit" [selectOption]="'Select'" [dropdownEls]="dropdownEls"></app-dropdown>
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Action Item</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li>
+                    <div class="cover-input">
+                      <span class="title-input">Cause</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li class="process">
+                    <div class="cover-input">
+                      <span class="title-input">Safestart / Critical Error</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                  <li class="process">
+                    <div class="cover-input">
+                      <span class="title-input">Process Safety Element</span>
+                      <div class="input-here">
+                        <input type="search">
+                      </div>
+                      <!-- input here -->
+                    </div>
+                    <!-- cover input -->
+                  </li>
+                </ul>
+                <!-- list action filter -->
+              </div>
+              <!-- action filter -->
+            </div>
+            <!-- end/cover filter -->
+          </div>
+          <!-- end /big-group-one -->
+          <div class="big-group-two" *ngIf="listItemAction">
+            <ul>
+              <li class="mix-xy" [ngClass]="{'active':txtCaregory === 'All'}">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{listItemAction | countArrayFilter : 'type' : 'All'}}</span>
+                    <span class="name">All</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="selectTabMasonry('All')"></a>
+              </li>
+              <li class="mix-xy" [ngClass]="{'active':txtCaregory === 'PHA'}">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{listItemAction | countArrayFilter : 'type' : 'PHA'}}</span>
+                    <span class="name">PHA</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="selectTabMasonry('PHA')"></a>
+              </li>
+              <li class="mix-xy" [ngClass]="{'active':txtCaregory === 'PSSR'}">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{listItemAction | countArrayFilter : 'type' : 'PSSR'}}</span>
+                    <span class="name">PSSR</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="selectTabMasonry('PSSR')"></a>
+              </li>
+              <li class="mix-xy" [ngClass]="{'active':txtCaregory === 'Cause Map'}">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{listItemAction | countArrayFilter : 'type' : 'Cause Map'}}</span>
+                    <span class="name">Cause Map</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="selectTabMasonry('Cause Map')"></a>
+              </li>
+              <li class="mix-xy" [ngClass]="{'active':txtCaregory === 'CEM'}">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{listItemAction | countArrayFilter : 'type' : 'CEM'}}</span>
+                    <span class="name">CEM</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="selectTabMasonry('CEM')"></a>
+              </li>
+              <li class="mix-xy" [ngClass]="{'active':txtCaregory === 'Incident Review'}">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{listItemAction | countArrayFilter : 'type' : 'Incident Review'}}</span>
+                    <span class="name">Incident Review</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="selectTabMasonry('Incident Review')"></a>
+              </li>
+              <li class="mix-xy" [ngClass]="{'active':txtCaregory === 'PSM Audit'}">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{listItemAction | countArrayFilter : 'type' : 'PSM Audit'}}</span>
+                    <span class="name">PSM Audit</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="selectTabMasonry('PSM Audit')"></a>
+              </li>
+            </ul>
+          </div>
+          <!-- end /big-group-two -->
+          <div class="big-group-three">
+            <div class="tab-all-content" *ngIf="txtCaregory === 'All'">
+              <table *ngIf="dataColumnOptions && pagedItems">
+                <thead>
+                  <tr>
+                    <th class="column01">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('id', $event)">
+                        <span class="name">ID</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column02" *ngIf="dataColumnOptions['All'][0].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('type', $event)">
+                        <span class="name">Type</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column03" *ngIf="dataColumnOptions['All'][1].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('title', $event)">
+                        <span class="name">Title</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column04" *ngIf="dataColumnOptions['All'][2].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('moc', $event)">
+                        <span class="name">MOC #</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column05" *ngIf="dataColumnOptions['All'][3].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('item', $event)">
+                        <span class="name">Action Item</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column06" *ngIf="dataColumnOptions['All'][4].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedBy', $event)">
+                        <span class="name">Assigned By</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column07" *ngIf="dataColumnOptions['All'][5].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedTo', $event)">
+                        <span class="name">Assigned To</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column08" *ngIf="dataColumnOptions['All'][6].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('dueDate', $event)">
+                        <span class="name">Due Date</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column09" *ngIf="dataColumnOptions['All'][7].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('comppletedDate', $event)">
+                        <span class="name">Completed</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column10">
+                      <div class="filter-column" [ngClass]="{'active':showColumnOption}">
+                        <a href="javascript:;" class="icon-filter" (click)="showColumnOptionFunc(); $event.stopPropagation()">
+                          <img class="img01" src="assets/i/symbols-icon-grey-settings.png" alt="IMG">
+                          <img class="img02" src="assets/i/symbols-icon-blue-settings.png" alt="IMG">
+                        </a>
+                        <div class="showhide-column" (click)="$event.stopPropagation()">
+                          <span class="name">Column Options</span>
+                          <ul>
+                            <li *ngFor="let option of dataColumnOptions['All']">
+                              <input type="checkbox" [(ngModel)]="option.isCheck" />
+                              <label for="cbox01" class="tick-me" (click)="option.isCheck = !option.isCheck">
+                                <span class="name-column">{{option.name}}</span>
+                                <img class="img01" src="assets/i/symbols-checkbox-off.png" alt="IMG">
+                                <img class="img02" src="assets/i/symbols-checkbox-on.png" alt="IMG">
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- end /showhide-column -->
+                      </div>
+                      <!-- end /filter-column -->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <table>
+                <tbody>
+                  <tr *ngFor="let item of pagedItems">
+                    <td class="special" colspan="10">
+                      <div class="part-one">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="column01">
+                                <img class="icon-progress" src="assets/i/symbols-icon-blue-progress.png" alt="IMG" [ngClass]="{'d-none':item.comppletedDate ===''}">
+                                <img class="icon-done" src="assets/i/symbols-icon-color-completed.png" alt="IMG" [ngClass]="{'d-none':item.comppletedDate !==''}">
+                              </td>
+                              <td class="column02" *ngIf="dataColumnOptions['All'][0].isCheck">
+                                <p>{{item.type}}</p>
+                              </td>
+                              <td class="column03" *ngIf="dataColumnOptions['All'][1].isCheck">
+                                <p>{{item.title}}</p>
+                              </td>
+                              <td class="column04" *ngIf="dataColumnOptions['All'][2].isCheck">
+                                <p>{{item.moc}}</p>
+                              </td>
+                              <td class="column05" *ngIf="dataColumnOptions['All'][3].isCheck">
+                                <p>{{item.item}}</p>
+                              </td>
+                              <td class="column06" *ngIf="dataColumnOptions['All'][4].isCheck">
+                                <p>{{item.assignedBy}}</p>
+                              </td>
+                              <td class="column07" *ngIf="dataColumnOptions['All'][5].isCheck">
+                                <p>{{item.assignedTo}}</p>
+                              </td>
+                              <td class="column08" *ngIf="dataColumnOptions['All'][6].isCheck">
+                                <p>{{item.dueDate | date: 'MM/dd/yyy'}}</p>
+                              </td>
+                              <td class="column09" *ngIf="dataColumnOptions['All'][7].isCheck">
+                                <p>{{item.comppletedDate | date: 'MM/dd/yyy'}}</p>
+                              </td>
+                              <td class="column10">
+                                <a href="javascript:;" class="icon-more mix-xy" (click)="showContentTableFunc($event)">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-more.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-more.png" alt="IMG">
+                                </a>
+                                <a href="javascript:;" class="icon-edit" (click)="openModalEdit()">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-edit.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-edit.png" alt="IMG">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end /part-one -->
+                      <div class="part-two">
+                        <div class="subtable">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td class="column01">
+                                  <span class="title">Completed By</span>
+                                  <p>{{item.completedBy}}</p>
+                                </td>
+                                <td class="column02">
+                                  <span class="title">Completed Comments</span>
+                                  <p>{{item.completedComment}}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- end /subtable -->
+                      </div>
+                      <!-- end /part-two -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="big-group-four">
+                <div class="left-group ver-y">
+                  <div class="ddown-here" *ngIf="dataFilterAction">
+                    <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)"
+                      [dropdownEls]="dropdownEls"></app-dropdown>
+                  </div>
+                  <p>Items / Page</p>
+                </div>
+                <!-- end /left-group -->
+                <div class="right-group" *ngIf="arrayFilter">
+                  <p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+                  <div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+                      <img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+                      <img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+                      <img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+                      <img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+                    </a>
+                  </div>
+                  <!-- end /list-icons -->
+                </div>
+                <!-- end /right-group -->
+              </div>
+              <!-- end /big-group-four -->
+            </div>
+            <!-- end /tab-all-content -->
+            <div class="tab-all-content" *ngIf="txtCaregory === 'PHA'">
+              <table *ngIf="dataColumnOptions && pagedItems">
+                <thead>
+                  <tr>
+                    <th class="column01">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('id', $event)">
+                        <span class="name">ID</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column02" *ngIf="dataColumnOptions['All'][0].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('type', $event)">
+                        <span class="name">Type</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column03" *ngIf="dataColumnOptions['All'][1].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('title', $event)">
+                        <span class="name">Title</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column04" *ngIf="dataColumnOptions['All'][2].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('moc', $event)">
+                        <span class="name">MOC #</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column05" *ngIf="dataColumnOptions['All'][3].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('item', $event)">
+                        <span class="name">Action Item</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column06" *ngIf="dataColumnOptions['All'][4].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedBy', $event)">
+                        <span class="name">Assigned By</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column07" *ngIf="dataColumnOptions['All'][5].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedTo', $event)">
+                        <span class="name">Assigned To</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column08" *ngIf="dataColumnOptions['All'][6].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('dueDate', $event)">
+                        <span class="name">Due Date</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column09" *ngIf="dataColumnOptions['All'][7].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('comppletedDate', $event)">
+                        <span class="name">Completed</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column10">
+                      <div class="filter-column" [ngClass]="{'active':showColumnOption}">
+                        <a href="javascript:;" class="icon-filter" (click)="showColumnOptionFunc(); $event.stopPropagation()">
+                          <img class="img01" src="assets/i/symbols-icon-grey-settings.png" alt="IMG">
+                          <img class="img02" src="assets/i/symbols-icon-blue-settings.png" alt="IMG">
+                        </a>
+                        <div class="showhide-column" (click)="$event.stopPropagation()">
+                          <span class="name">Column Options</span>
+                          <ul>
+                            <li *ngFor="let option of dataColumnOptions['All']">
+                              <input type="checkbox" [(ngModel)]="option.isCheck" />
+                              <label for="cbox01" class="tick-me" (click)="option.isCheck = !option.isCheck">
+                                <span class="name-column">{{option.name}}</span>
+                                <img class="img01" src="assets/i/symbols-checkbox-off.png" alt="IMG">
+                                <img class="img02" src="assets/i/symbols-checkbox-on.png" alt="IMG">
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- end /showhide-column -->
+                      </div>
+                      <!-- end /filter-column -->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <table>
+                <tbody>
+                  <tr *ngFor="let item of pagedItems">
+                    <td class="special" colspan="10">
+                      <div class="part-one">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="column01">
+                                <img class="icon-progress" src="assets/i/symbols-icon-blue-progress.png" alt="IMG" [ngClass]="{'d-none':item.comppletedDate ===''}">
+                                <img class="icon-done" src="assets/i/symbols-icon-color-completed.png" alt="IMG" [ngClass]="{'d-none':item.comppletedDate !==''}">
+                              </td>
+                              <td class="column02" *ngIf="dataColumnOptions['All'][0].isCheck">
+                                <p>{{item.type}}</p>
+                              </td>
+                              <td class="column03" *ngIf="dataColumnOptions['All'][1].isCheck">
+                                <p>{{item.title}}</p>
+                              </td>
+                              <td class="column04" *ngIf="dataColumnOptions['All'][2].isCheck">
+                                <p>{{item.moc}}</p>
+                              </td>
+                              <td class="column05" *ngIf="dataColumnOptions['All'][3].isCheck">
+                                <p>{{item.item}}</p>
+                              </td>
+                              <td class="column06" *ngIf="dataColumnOptions['All'][4].isCheck">
+                                <p>{{item.assignedBy}}</p>
+                              </td>
+                              <td class="column07" *ngIf="dataColumnOptions['All'][5].isCheck">
+                                <p>{{item.assignedTo}}</p>
+                              </td>
+                              <td class="column08" *ngIf="dataColumnOptions['All'][6].isCheck">
+                                <p>{{item.dueDate | date: 'MM/dd/yyy'}}</p>
+                              </td>
+                              <td class="column09" *ngIf="dataColumnOptions['All'][7].isCheck">
+                                <p>{{item.comppletedDate | date: 'MM/dd/yyy'}}</p>
+                              </td>
+                              <td class="column10">
+                                <a href="javascript:;" class="icon-more mix-xy" (click)="showContentTableFunc($event)">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-more.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-more.png" alt="IMG">
+                                </a>
+                                <a href="javascript:;" class="icon-edit" (click)="openModalEdit()">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-edit.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-edit.png" alt="IMG">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end /part-one -->
+                      <div class="part-two">
+                        <div class="subtable">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td class="column01">
+                                  <span class="title">Completed By</span>
+                                  <p>{{item.completedBy}}</p>
+                                </td>
+                                <td class="column02">
+                                  <span class="title">Completed Comments</span>
+                                  <p>{{item.completedComment}}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- end /subtable -->
+                      </div>
+                      <!-- end /part-two -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="big-group-four">
+                <div class="left-group ver-y">
+                  <div class="ddown-here" *ngIf="dataFilterAction">
+                    <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)"
+                      [dropdownEls]="dropdownEls"></app-dropdown>
+                  </div>
+                  <p>Items / Page</p>
+                </div>
+                <!-- end /left-group -->
+                <div class="right-group" *ngIf="arrayFilter">
+                  <p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+                  <div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+                      <img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+                      <img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+                      <img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+                      <img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+                    </a>
+                  </div>
+                  <!-- end /list-icons -->
+                </div>
+                <!-- end /right-group -->
+              </div>
+              <!-- end /big-group-four -->
+            </div>
+            <!-- end /tab-PHA-content -->
+            <div class="tab-all-content" *ngIf="txtCaregory === 'PSSR'">
+              <table *ngIf="dataColumnOptions && pagedItems">
+                <thead>
+                  <tr>
+                    <th class="column01">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('id', $event)">
+                        <span class="name">ID</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column02" *ngIf="dataColumnOptions['All'][0].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('type', $event)">
+                        <span class="name">Type</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column03" *ngIf="dataColumnOptions['All'][1].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('title', $event)">
+                        <span class="name">Title</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column04" *ngIf="dataColumnOptions['All'][2].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('moc', $event)">
+                        <span class="name">MOC #</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column05" *ngIf="dataColumnOptions['All'][3].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('item', $event)">
+                        <span class="name">Action Item</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column06" *ngIf="dataColumnOptions['All'][4].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedBy', $event)">
+                        <span class="name">Assigned By</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column07" *ngIf="dataColumnOptions['All'][5].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedTo', $event)">
+                        <span class="name">Assigned To</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column08" *ngIf="dataColumnOptions['All'][6].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('dueDate', $event)">
+                        <span class="name">Due Date</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column09" *ngIf="dataColumnOptions['All'][7].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('comppletedDate', $event)">
+                        <span class="name">Completed</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column10">
+                      <div class="filter-column" [ngClass]="{'active':showColumnOption}">
+                        <a href="javascript:;" class="icon-filter" (click)="showColumnOptionFunc(); $event.stopPropagation()">
+                          <img class="img01" src="assets/i/symbols-icon-grey-settings.png" alt="IMG">
+                          <img class="img02" src="assets/i/symbols-icon-blue-settings.png" alt="IMG">
+                        </a>
+                        <div class="showhide-column" (click)="$event.stopPropagation()">
+                          <span class="name">Column Options</span>
+                          <ul>
+                            <li *ngFor="let option of dataColumnOptions['All']">
+                              <input type="checkbox" [(ngModel)]="option.isCheck" />
+                              <label for="cbox01" class="tick-me" (click)="option.isCheck = !option.isCheck">
+                                <span class="name-column">{{option.name}}</span>
+                                <img class="img01" src="assets/i/symbols-checkbox-off.png" alt="IMG">
+                                <img class="img02" src="assets/i/symbols-checkbox-on.png" alt="IMG">
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- end /showhide-column -->
+                      </div>
+                      <!-- end /filter-column -->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <table>
+                <tbody>
+                  <tr *ngFor="let item of pagedItems">
+                    <td class="special" colspan="10">
+                      <div class="part-one">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="column01">
+                                <img class="icon-progress" src="assets/i/symbols-icon-blue-progress.png" alt="IMG" [ngClass]="{'d-none':item.comppletedDate ===''}">
+                                <img class="icon-done" src="assets/i/symbols-icon-color-completed.png" alt="IMG" [ngClass]="{'d-none':item.comppletedDate !==''}">
+                              </td>
+                              <td class="column02" *ngIf="dataColumnOptions['All'][0].isCheck">
+                                <p>{{item.type}}</p>
+                              </td>
+                              <td class="column03" *ngIf="dataColumnOptions['All'][1].isCheck">
+                                <p>{{item.title}}</p>
+                              </td>
+                              <td class="column04" *ngIf="dataColumnOptions['All'][2].isCheck">
+                                <p>{{item.moc}}</p>
+                              </td>
+                              <td class="column05" *ngIf="dataColumnOptions['All'][3].isCheck">
+                                <p>{{item.item}}</p>
+                              </td>
+                              <td class="column06" *ngIf="dataColumnOptions['All'][4].isCheck">
+                                <p>{{item.assignedBy}}</p>
+                              </td>
+                              <td class="column07" *ngIf="dataColumnOptions['All'][5].isCheck">
+                                <p>{{item.assignedTo}}</p>
+                              </td>
+                              <td class="column08" *ngIf="dataColumnOptions['All'][6].isCheck">
+                                <p>{{item.dueDate | date: 'MM/dd/yyy'}}</p>
+                              </td>
+                              <td class="column09" *ngIf="dataColumnOptions['All'][7].isCheck">
+                                <p>{{item.comppletedDate | date: 'MM/dd/yyy'}}</p>
+                              </td>
+                              <td class="column10">
+                                <a href="javascript:;" class="icon-more mix-xy" (click)="showContentTableFunc($event)">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-more.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-more.png" alt="IMG">
+                                </a>
+                                <a href="javascript:;" class="icon-edit" (click)="openModalEdit()">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-edit.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-edit.png" alt="IMG">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end /part-one -->
+                      <div class="part-two">
+                        <div class="subtable">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td class="column01">
+                                  <span class="title">Completed By</span>
+                                  <p>{{item.completedBy}}</p>
+                                </td>
+                                <td class="column02">
+                                  <span class="title">Completed Comments</span>
+                                  <p>{{item.completedComment}}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- end /subtable -->
+                      </div>
+                      <!-- end /part-two -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="big-group-four">
+                <div class="left-group ver-y">
+                  <div class="ddown-here" *ngIf="dataFilterAction">
+                    <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)"
+                      [dropdownEls]="dropdownEls"></app-dropdown>
+                  </div>
+                  <p>Items / Page</p>
+                </div>
+                <!-- end /left-group -->
+                <div class="right-group" *ngIf="arrayFilter">
+                  <p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+                  <div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+                      <img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+                      <img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+                      <img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+                      <img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+                    </a>
+                  </div>
+                  <!-- end /list-icons -->
+                </div>
+                <!-- end /right-group -->
+              </div>
+              <!-- end /big-group-four -->
+            </div>
+            <!-- end /tab-PSSR-content -->
+            <div class="tab-cem-content" *ngIf="txtCaregory === 'CEM'">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column01">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('id', $event)">
+                        <span class="name">ID</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column02" *ngIf="dataColumnOptions['Cem'][0].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('incidentTitle', $event)">
+                        <span class="name">Incident Title</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column03" *ngIf="dataColumnOptions['Cem'][1].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('item', $event)">
+                        <span class="name">Action Item</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column04" *ngIf="dataColumnOptions['Cem'][2].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('safestartCriticalError', $event)">
+                        <span class="name">Associated Plans</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column05" *ngIf="dataColumnOptions['Cem'][3].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('concerns', $event)">
+                        <span class="name">Concerns</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column06" *ngIf="dataColumnOptions['Cem'][4].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedBy', $event)">
+                        <span class="name">Assigned By</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column07" *ngIf="dataColumnOptions['Cem'][5].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedTo', $event)">
+                        <span class="name">Assigned To</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column08" *ngIf="dataColumnOptions['Cem'][6].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('dueDate', $event)">
+                        <span class="name">Due Date</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column09">
+                      <div class="filter-column" [ngClass]="{'active':showColumnOption}">
+                        <a href="javascript:;" class="icon-filter" (click)="showColumnOptionFunc(); $event.stopPropagation()">
+                          <img class="img01" src="assets/i/symbols-icon-grey-settings.png" alt="IMG">
+                          <img class="img02" src="assets/i/symbols-icon-blue-settings.png" alt="IMG">
+                        </a>
+                        <div class="showhide-column">
+                          <span class="name">Column Options</span>
+                          <ul>
+                            <li *ngFor="let option of dataColumnOptions['Cem']">
+                              <input type="checkbox" [(ngModel)]="option.isCheck" />
+                              <label for="cbox01" class="tick-me" (click)="option.isCheck = !option.isCheck">
+                                <span class="name-column">{{option.name}}</span>
+                                <img class="img01" src="assets/i/symbols-checkbox-off.png" alt="IMG">
+                                <img class="img02" src="assets/i/symbols-checkbox-on.png" alt="IMG">
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- end /showhide-column -->
+                      </div>
+                      <!-- end /filter-column -->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <table>
+                <tbody>
+                  <tr *ngFor="let item of pagedItems">
+                    <td class="special" colspan="10">
+                      <div class="part-one">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="column01">
+                                <img class="icon-progress" src="assets/i/symbols-icon-blue-progress.png" alt="IMG" [ngClass]="{'d-none':item.comppletedDate ===''}">
+                                <img class="icon-done" src="assets/i/symbols-icon-color-completed.png" alt="IMG" [ngClass]="{'d-none':item.comppletedDate !==''}">
+                              </td>
+                              <td class="column02" *ngIf="dataColumnOptions['Cem'][0].isCheck">
+                                <p>{{item.incidentTitle}}</p>
+                              </td>
+                              <td class="column03" *ngIf="dataColumnOptions['Cem'][1].isCheck">
+                                <p>{{item.item}}</p>
+                              </td>
+                              <td class="column04" *ngIf="dataColumnOptions['Cem'][2].isCheck">
+                                <p>{{item.associatedPlans}}</p>
+                              </td>
+                              <td class="column05" *ngIf="dataColumnOptions['Cem'][3].isCheck">
+                                <p>{{item.concerns}}</p>
+                              </td>
+                              <td class="column06" *ngIf="dataColumnOptions['Cem'][4].isCheck">
+                                <p>{{item.assignedBy}}</p>
+                              </td>
+                              <td class="column07" *ngIf="dataColumnOptions['Cem'][5].isCheck">
+                                <p>{{item.assignedTo}}</p>
+                              </td>
+                              <td class="column08" *ngIf="dataColumnOptions['Cem'][6].isCheck">
+                                <p>{{item.dueDate | date: 'MM/dd/yyyy'}}</p>
+                              </td>
+                              <td class="column09">
+                                <a href="javascript:;" class="icon-more mix-xy" (click)="showContentTableFunc($event)">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-more.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-more.png" alt="IMG">
+                                </a>
+                                <a href="javascript:;" class="icon-edit" (click)="openModalEdit()">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-edit.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-edit.png" alt="IMG">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end /part-one -->
+                      <div class="part-two">
+                        <div class="subtable">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td class="column01">
+                                  <span class="title">Completed By</span>
+                                  <p>{{item.completedBy}}</p>
+                                </td>
+                                <td class="column02">
+                                  <span class="title">Completed Comments</span>
+                                  <p>{{item.completedComment}}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- end /subtable -->
+                      </div>
+                      <!-- end /part-two -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="big-group-four">
+                <div class="left-group ver-y">
+                  <div class="ddown-here" *ngIf="dataFilterAction">
+                    <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)"
+                      [dropdownEls]="dropdownEls"></app-dropdown>
+                  </div>
+                  <p>Items / Page</p>
+                </div>
+                <!-- end /left-group -->
+                <div class="right-group" *ngIf="arrayFilter">
+                  <p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+                  <div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+                      <img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+                      <img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+                      <img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+                      <img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+                    </a>
+                  </div>
+                  <!-- end /list-icons -->
+                </div>
+                <!-- end /right-group -->
+              </div>
+              <!-- end /big-group-four -->
+            </div>
+            <!-- end /tab-cem-content -->
+            <div class="tab-cause-map" *ngIf="txtCaregory === 'Cause Map'">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column01" *ngIf="dataColumnOptions['Cause Map'][0].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('incidentTitle', $event)">
+                        <span class="name">Incident Title</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column02" *ngIf="dataColumnOptions['Cause Map'][1].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('item', $event)">
+                        <span class="name">Action Item</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column03" *ngIf="dataColumnOptions['Cause Map'][2].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('associatedPlans', $event)">
+                        <span class="name">Safestart / Critical Error</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column04" *ngIf="dataColumnOptions['Cause Map'][3].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('concerns', $event)">
+                        <span class="name">Process Safety Element</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column05" *ngIf="dataColumnOptions['Cause Map'][4].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedBy', $event)">
+                        <span class="name">Assigned By</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column06" *ngIf="dataColumnOptions['Cause Map'][5].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedTo', $event)">
+                        <span class="name">Assigned To</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column07" *ngIf="dataColumnOptions['Cause Map'][6].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('dueDate', $event)">
+                        <span class="name">Due Date</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column08">
+                      <div class="filter-column" [ngClass]="{'active':showColumnOption}">
+                        <a href="javascript:;" class="icon-filter" (click)="showColumnOptionFunc(); $event.stopPropagation()">
+                          <img class="img01" src="assets/i/symbols-icon-grey-settings.png" alt="IMG">
+                          <img class="img02" src="assets/i/symbols-icon-blue-settings.png" alt="IMG">
+                        </a>
+                        <div class="showhide-column">
+                          <span class="name">Column Options</span>
+                          <ul>
+                            <li *ngFor="let option of dataColumnOptions['Cause Map']">
+                              <input type="checkbox" [(ngModel)]="option.isCheck" />
+                              <label for="cbox01" class="tick-me" (click)="option.isCheck = !option.isCheck">
+                                <span class="name-column">{{option.name}}</span>
+                                <img class="img01" src="assets/i/symbols-checkbox-off.png" alt="IMG">
+                                <img class="img02" src="assets/i/symbols-checkbox-on.png" alt="IMG">
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- end /showhide-column -->
+                      </div>
+                      <!-- end /filter-column -->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <table>
+                <tbody>
+                  <tr *ngFor="let item of pagedItems">
+                    <td class="special" colspan="10">
+                      <div class="part-one">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="column01" *ngIf="dataColumnOptions['Cause Map'][0].isCheck">
+                                <p>{{item.incidentTitle}}</p>
+                              </td>
+                              <td class="column02" *ngIf="dataColumnOptions['Cause Map'][1].isCheck">
+                                <p>{{item.item}}</p>
+                              </td>
+                              <td class="column03" *ngIf="dataColumnOptions['Cause Map'][2].isCheck">
+                                <p>{{item.safestartCriticalError}}</p>
+                              </td>
+                              <td class="column04" *ngIf="dataColumnOptions['Cause Map'][3].isCheck">
+                                <p>{{item.processSafetyElement}}</p>
+                              </td>
+                              <td class="column05" *ngIf="dataColumnOptions['Cause Map'][4].isCheck">
+                                <p>{{item.assignedBy}}</p>
+                              </td>
+                              <td class="column06" *ngIf="dataColumnOptions['Cause Map'][5].isCheck">
+                                <p>{{item.assignedTo}}</p>
+                              </td>
+                              <td class="column07" *ngIf="dataColumnOptions['Cause Map'][6].isCheck">
+                                <p>{{item.dueDate | date: 'MM/dd/yyyy'}}</p>
+                              </td>
+                              <td class="column08">
+                                <a href="javascript:;" class="icon-more mix-xy" (click)="showContentTableFunc($event)">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-more.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-more.png" alt="IMG">
+                                </a>
+                                <a href="javascript:;" class="icon-edit" (click)="openModalEdit()">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-edit.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-edit.png" alt="IMG">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end /part-one -->
+                      <div class="part-two">
+                        <div class="subtable">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td class="column01">
+                                  <span class="title">Completed By</span>
+                                  <p>{{item.completedBy}}</p>
+                                </td>
+                                <td class="column02">
+                                  <span class="title">Completed Comments</span>
+                                  <p>S{{item.completedComment}}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- end /subtable -->
+                      </div>
+                      <!-- end /part-two -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="big-group-four">
+                <div class="left-group ver-y">
+                  <div class="ddown-here" *ngIf="dataFilterAction">
+                    <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)"
+                      [dropdownEls]="dropdownEls"></app-dropdown>
+                  </div>
+                  <p>Items / Page</p>
+                </div>
+                <!-- end /left-group -->
+                <div class="right-group" *ngIf="arrayFilter">
+                  <p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+                  <div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+                      <img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+                      <img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+                      <img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+                      <img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+                    </a>
+                  </div>
+                  <!-- end /list-icons -->
+                </div>
+                <!-- end /right-group -->
+              </div>
+              <!-- end /big-group-four -->
+            </div>
+            <!-- end /tab-cause-map -->
+            <div class="tab-cause-map tab-incident-review" *ngIf="txtCaregory === 'Incident Review'">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column01" *ngIf="dataColumnOptions['Incident Review'][0].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('incidentTitle', $event)">
+                        <span class="name">Incident Title</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column02" *ngIf="dataColumnOptions['Incident Review'][1].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('item', $event)">
+                        <span class="name">Action Item</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column03" *ngIf="dataColumnOptions['Incident Review'][2].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('safestartCriticalError', $event)">
+                        <span class="name">Safestart / Critical Error</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column04" *ngIf="dataColumnOptions['Incident Review'][3].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('processSafetyElement', $event)">
+                        <span class="name">Process Safety Element</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column05" *ngIf="dataColumnOptions['Incident Review'][4].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedBy', $event)">
+                        <span class="name">Assigned By</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column06" *ngIf="dataColumnOptions['Incident Review'][5].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedTo', $event)">
+                        <span class="name">Assigned To</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column07" *ngIf="dataColumnOptions['Incident Review'][6].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('dueDate', $event)">
+                        <span class="name">Due Date</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column08">
+                      <div class="filter-column" [ngClass]="{'active':showColumnOption}">
+                        <a href="javascript:;" class="icon-filter" (click)="showColumnOptionFunc(); $event.stopPropagation()">
+                          <img class="img01" src="assets/i/symbols-icon-grey-settings.png" alt="IMG">
+                          <img class="img02" src="assets/i/symbols-icon-blue-settings.png" alt="IMG">
+                        </a>
+                        <div class="showhide-column" (click)="$event.stopPropagation()">
+                          <span class="name">Column Options</span>
+                          <ul>
+                            <li *ngFor="let option of dataColumnOptions['Incident Review']">
+                              <input type="checkbox" [(ngModel)]="option.isCheck" />
+                              <label for="cbox01" class="tick-me" (click)="option.isCheck = !option.isCheck">
+                                <span class="name-column">{{option.name}}</span>
+                                <img class="img01" src="assets/i/symbols-checkbox-off.png" alt="IMG">
+                                <img class="img02" src="assets/i/symbols-checkbox-on.png" alt="IMG">
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- end /showhide-column -->
+                      </div>
+                      <!-- end /filter-column -->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <table>
+                <tbody>
+                  <tr *ngFor="let item of pagedItems">
+                    <td class="special" colspan="10">
+                      <div class="part-one">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="column01" *ngIf="dataColumnOptions['Incident Review'][0].isCheck">
+                                <p>{{item.incidentTitle}}</p>
+                              </td>
+                              <td class="column02" *ngIf="dataColumnOptions['Incident Review'][1].isCheck">
+                                <p>{{item.item}}</p>
+                              </td>
+                              <td class="column03" *ngIf="dataColumnOptions['Incident Review'][2].isCheck">
+                                <p>{{item.safestartCriticalError}}</p>
+                              </td>
+                              <td class="column04" *ngIf="dataColumnOptions['Incident Review'][3].isCheck">
+                                <p>{{item.processSafetyElement}}</p>
+                              </td>
+                              <td class="column05" *ngIf="dataColumnOptions['Incident Review'][4].isCheck">
+                                <p>{{item.assignedBy}}</p>
+                              </td>
+                              <td class="column06" *ngIf="dataColumnOptions['Incident Review'][5].isCheck">
+                                <p>{{item.assignedTo}}</p>
+                              </td>
+                              <td class="column07" *ngIf="dataColumnOptions['Incident Review'][6].isCheck">
+                                <p>{{item.dueDate | date: 'MM/dd/yyyy'}}</p>
+                              </td>
+                              <td class="column08">
+                                <a href="javascript:;" class="icon-more mix-xy" (click)="showContentTableFunc($event)">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-more.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-more.png" alt="IMG">
+                                </a>
+                                <a href="javascript:;" class="icon-edit" (click)="openModalEdit()">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-edit.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-edit.png" alt="IMG">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end /part-one -->
+                      <div class="part-two">
+                        <div class="subtable">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td class="column01">
+                                  <span class="title">Completed By</span>
+                                  <p>{{item.completedBy}}</p>
+                                </td>
+                                <td class="column02">
+                                  <span class="title">Completed Comments</span>
+                                  <p>{{item.completedComment}}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- end /subtable -->
+                      </div>
+                      <!-- end /part-two -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="big-group-four">
+                <div class="left-group ver-y">
+                  <div class="ddown-here" *ngIf="dataFilterAction">
+                    <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)"
+                      [dropdownEls]="dropdownEls"></app-dropdown>
+                  </div>
+                  <p>Items / Page</p>
+                </div>
+                <!-- end /left-group -->
+                <div class="right-group" *ngIf="arrayFilter">
+                  <p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+                  <div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+                      <img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+                      <img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+                      <img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+                      <img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+                    </a>
+                  </div>
+                  <!-- end /list-icons -->
+                </div>
+                <!-- end /right-group -->
+              </div>
+              <!-- end /big-group-four -->
+            </div>
+            <!-- end /tab-incident-review -->
+            <div class="tab-cause-map tab-psm-audit" *ngIf="txtCaregory === 'PSM Audit'">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="column01" *ngIf="dataColumnOptions['PSM Audit'][0].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('psmAudit', $event)">
+                        <span class="name">PSM Audit</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column02" *ngIf="dataColumnOptions['PSM Audit'][1].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('item', $event)">
+                        <span class="name">Action Item</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column03" *ngIf="dataColumnOptions['PSM Audit'][2].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('safestartCriticalError', $event)">
+                        <span class="name">Safestart / Critical Error</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column04" *ngIf="dataColumnOptions['PSM Audit'][3].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('processSafetyElement', $event)">
+                        <span class="name">Process Safety Element</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column05" *ngIf="dataColumnOptions['PSM Audit'][4].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedBy', $event)">
+                        <span class="name">Assigned By</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column06" *ngIf="dataColumnOptions['PSM Audit'][5].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('assignedTo', $event)">
+                        <span class="name">Assigned To</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column07" *ngIf="dataColumnOptions['PSM Audit'][6].isCheck">
+                      <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('dueDate', $event)">
+                        <span class="name">Due Date</span>
+                        <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                        <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                      </a>
+                    </th>
+                    <th class="column08">
+                      <div class="filter-column" [ngClass]="{'active':showColumnOption}">
+                        <a href="javascript:;" class="icon-filter" (click)="showColumnOptionFunc(); $event.stopPropagation()">
+                          <img class="img01" src="assets/i/symbols-icon-grey-settings.png" alt="IMG">
+                          <img class="img02" src="assets/i/symbols-icon-blue-settings.png" alt="IMG">
+                        </a>
+                        <div class="showhide-column" (click)="$event.stopPropagation()">
+                          <span class="name">Column Options</span>
+                          <ul>
+                            <li *ngFor="let option of dataColumnOptions['PSM Audit']">
+                              <input type="checkbox" [(ngModel)]="option.isCheck" />
+                              <label for="cbox01" class="tick-me" (click)="option.isCheck = !option.isCheck">
+                                <span class="name-column">{{option.name}}</span>
+                                <img class="img01" src="assets/i/symbols-checkbox-off.png" alt="IMG">
+                                <img class="img02" src="assets/i/symbols-checkbox-on.png" alt="IMG">
+                              </label>
+                            </li>
+                          </ul>
+                        </div>
+                        <!-- end /showhide-column -->
+                      </div>
+                      <!-- end /filter-column -->
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <table>
+                <tbody>
+                  <tr *ngFor="let item of pagedItems">
+                    <td class="special" colspan="10">
+                      <div class="part-one">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td class="column01" *ngIf="dataColumnOptions['PSM Audit'][0].isCheck">
+                                <p>{{item.psmAudit}}</p>
+                              </td>
+                              <td class="column02" *ngIf="dataColumnOptions['PSM Audit'][1].isCheck">
+                                <p>{{item.item}}</p>
+                              </td>
+                              <td class="column03" *ngIf="dataColumnOptions['PSM Audit'][2].isCheck">
+                                <p>{{item.safestartCriticalError}}</p>
+                              </td>
+                              <td class="column04" *ngIf="dataColumnOptions['PSM Audit'][3].isCheck">
+                                <p>{{item.processSafetyElement}}</p>
+                              </td>
+                              <td class="column05" *ngIf="dataColumnOptions['PSM Audit'][4].isCheck">
+                                <p>{{item.assignedBy}}</p>
+                              </td>
+                              <td class="column06" *ngIf="dataColumnOptions['PSM Audit'][5].isCheck">
+                                <p>{{item.assignedTo}}</p>
+                              </td>
+                              <td class="column07" *ngIf="dataColumnOptions['PSM Audit'][6].isCheck">
+                                <p>{{item.dueDate | date: 'MM/dd/yyyy'}}</p>
+                              </td>
+                              <td class="column08">
+                                <a href="javascript:;" class="icon-more mix-xy" (click)="showContentTableFunc($event)">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-more.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-more.png" alt="IMG">
+                                </a>
+                                <a href="javascript:;" class="icon-edit" (click)="openModalEdit()">
+                                  <img class="img01" src="assets/i/symbols-icon-grey-edit.png" alt="IMG">
+                                  <img class="img02" src="assets/i/symbols-icon-blue-edit.png" alt="IMG">
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <!-- end /part-one -->
+                      <div class="part-two">
+                        <div class="subtable">
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td class="column01">
+                                  <span class="title">Completed By</span>
+                                  <p>{{item.completedBy}}</p>
+                                </td>
+                                <td class="column02">
+                                  <span class="title">Completed Comments</span>
+                                  <p>{{item.completedComment}}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- end /subtable -->
+                      </div>
+                      <!-- end /part-two -->
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="big-group-four">
+                <div class="left-group ver-y">
+                  <div class="ddown-here" *ngIf="dataFilterAction">
+                    <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)"
+                      [dropdownEls]="dropdownEls"></app-dropdown>
+                  </div>
+                  <p>Items / Page</p>
+                </div>
+                <!-- end /left-group -->
+                <div class="right-group" *ngIf="arrayFilter">
+                  <p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+                  <div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+                      <img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+                      <img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+                      <img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                    </a>
+                    <a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+                      <img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+                    </a>
+                  </div>
+                  <!-- end /list-icons -->
+                </div>
+                <!-- end /right-group -->
+              </div>
+              <!-- end /big-group-four -->
+            </div>
+            <!-- end /tab-psm-audit -->
+          </div>
+          <!-- end /big-group-three -->
+        </div>
+        <!-- end /bottom-content -->
+      </div>
+      <!-- end /meeting-page -->
+    </div>
+  </div>
+</div>
+<!-- end /container -->
+<app-left-aside *ngIf="!showMenuHeader"></app-left-aside>

@@ -1,0 +1,342 @@
+<app-header (callback)="callbackHeaderMenuFunc($event)">
+</app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="meeting-page" appSetHeight [ngClass]="{'fix-width':!showMenuHeader}">
+        <div class="top-content ver-y">
+          <img src="assets/i/symbols-icon-dark-meeting.png" alt="IMG">
+          <p>Meeting Sign In Logs / {{attrFilter}}</p>
+        </div>
+        <!-- end /top-content -->
+        <div class="bottom-content">
+          <div class="big-group-one">
+            <div class="cover-filter">
+              <div class="top-filter">
+                <div class="left-top-filter">
+                  <div class="list-sort-filter">
+                    <div class="group-input">
+                      <div class="cover-input">
+                        <span class="title-input">Keyword</span>
+                        <div class="input-here">
+                          <input type="search">
+                        </div>
+                        <!-- input here -->
+                      </div>
+                      <!-- cover input -->
+                    </div>
+                    <app-datepicker-range [data]="dataFilter" (changeDate)="callbackDatePickerFunc($event)"></app-datepicker-range>
+                    <div class="group-input">
+                      <a href="javascript:;" class="click-seach mix-xy" (click)="clickSearChFunc()">
+                        <img src="assets/i/symbols-icon-blue-search.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-search.png" alt="image">
+                      </a>
+                      <!-- click seach -->
+                    </div>
+                  </div>
+                  <!-- list sort filter -->
+                </div>
+                <!-- left top filter -->
+                <div class="right-top-filter">
+                  <div class="cover-action">
+                    <span class="title-action">Actions</span>
+                    <div class="action-box">
+                      <a href="javascript:;" class="click-print mix-xy">
+                        <img src="assets/i/symbols-icon-blue-print.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-print.png" alt="image">
+                      </a>
+                      <!-- click print -->
+                      <a href="assets/MeetingSigninALS.XLS" class="click-excel mix-xy">
+                        <img src="assets/i/symbols-icon-blue-excel.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-excel.png" alt="image">
+                      </a>
+                      <!-- click excel -->
+                    </div>
+                    <!-- action box -->
+                  </div>
+                  <!-- cover action -->
+                  <div class="cover-view">
+                    <span class="title-view">View Mode</span>
+                    <div class="box-view">
+                      <a href="javascript:;" class="click-day mix-xy">
+                        <img src="assets/i/symbols-icon-grey-date.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-date.png" alt="image">
+                      </a>
+                      <a href="javascript:;" class="click-grid mix-xy">
+                        <img src="assets/i/symbols-icon-grey-grid.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-grid.png" alt="image">
+                      </a>
+                      <a href="javascript:;" class="click-list mix-xy active">
+                        <img src="assets/i/symbols-icon-grey-table.png" alt="image">
+                        <img src="assets/i/symbols-icon-white-table.png" alt="image">
+                      </a>
+                    </div>
+                    <!-- box view -->
+                  </div>
+                  <!-- cover view	 -->
+                </div>
+                <!-- right top filter -->
+              </div>
+              <!-- top filter -->
+            </div>
+            <!-- end/cover filter -->
+          </div>
+          <!-- end /big-group-one -->
+          <div class="big-group-two">
+            <ul>
+              <li #btnFilterTable class="mix-xy active">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{allItemsMeetings|countArrayFilter : 'My Meetings' : userName}}</span>
+                    <span class="name">My Meetings</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="filterTableFunc($event, 'My Meetings')"></a>
+              </li>
+              <li #btnFilterTable class="mix-xy">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{allItemsMeetings|countArrayFilter : 'All' : userName}}</span>
+                    <span class="name">All Meetings</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="filterTableFunc($event, 'All')"></a>
+              </li>
+              <li #btnFilterTable class="mix-xy">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{allItemsMeetings|countArrayFilter : 'My Reports' : userName}}</span>
+                    <span class="name">My Reports</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="filterTableFunc($event, 'My Reports')"></a>
+              </li>
+              <li #btnFilterTable class="mix-xy">
+                <div class="cover-all ver-y">
+                  <div>
+                    <span class="number">{{allItemsMeetings|countArrayFilter : 'Not Attended' : userName}}</span>
+                    <span class="name">Not Attended</span>
+                  </div>
+                </div>
+                <a href="javascript:;" class="big-hand" (click)="filterTableFunc($event, 'Not Attended')"></a>
+              </li>
+            </ul>
+          </div>
+          <!-- end /big-group-two -->
+          <div class="big-group-three" *ngIf="dataColumnOption && pager">
+            <table>
+              <thead>
+                <tr>
+                  <th class="column01" *ngIf="dataColumnOption[0].isCheck">
+                    <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('id', $event)">
+                      <span class="name">ID</span>
+                      <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                      <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                    </a>
+                  </th>
+                  <th class="column02" *ngIf="dataColumnOption[1].isCheck">
+                    <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('name', $event)">
+                      <span class="name">Name</span>
+                      <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                      <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                    </a>
+                  </th>
+                  <th class="column03" *ngIf="dataColumnOption[2].isCheck">
+                    <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('leader', $event)">
+                      <span class="name">Leader</span>
+                      <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                      <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                    </a>
+                  </th>
+                  <th class="column04" *ngIf="dataColumnOption[3].isCheck">
+                    <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('date', $event)">
+                      <span class="name">Date</span>
+                      <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                      <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                    </a>
+                  </th>
+                  <th class="column05" *ngIf="dataColumnOption[4].isCheck">
+                    <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('notes', $event)">
+                      <span class="name">Note</span>
+                      <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                      <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                    </a>
+                  </th>
+                  <th class="column06" *ngIf="dataColumnOption[5].isCheck">
+                    <a #titleCol href="javascript:;" class="title ver-y" (click)="clickSortBy('attendees', $event)">
+                      <span class="name">Attendees</span>
+                      <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                      <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                    </a>
+                  </th>
+                  <th class="column07">
+                    <div class="filter-column" [ngClass]="{'active':showColumnOption}">
+                      <a href="javascript:;" class="icon-filter" (click)="showColumnOptionFunc(); $event.stopPropagation()">
+                        <img class="img01" src="assets/i/symbols-icon-grey-settings.png" alt="IMG">
+                        <img class="img02" src="assets/i/symbols-icon-blue-settings.png" alt="IMG">
+                      </a>
+                      <div class="showhide-column" (click)="$event.stopPropagation()">
+                        <span class="name">Column Options</span>
+                        <ul>
+                          <li *ngFor="let item of dataColumnOption">
+                            <input type="checkbox" [(ngModel)]="item.isCheck" />
+                            <label class="tick-me" (click)="selectColumnsItem(item)">
+                              <span class="name-column">{{item.name}}</span>
+                              <img class="img01" src="assets/i/symbols-checkbox-off.png" alt="IMG">
+                              <img class="img02" src="assets/i/symbols-checkbox-on.png" alt="IMG">
+                            </label>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- end /showhide-column -->
+                    </div>
+                    <!-- end /filter-column -->
+                  </th>
+                </tr>
+              </thead>
+            </table>
+            <table>
+              <tbody>
+                <tr *ngFor="let item of pagedItems">
+                  <td class="special" colspan="7">
+                    <div class="part-one">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td class="column01" *ngIf="dataColumnOption[0].isCheck">
+                              <p>{{item.id}}</p>
+                            </td>
+                            <td class="column02" *ngIf="dataColumnOption[1].isCheck">
+                              <p>{{item.name}}</p>
+                            </td>
+                            <td class="column03" *ngIf="dataColumnOption[2].isCheck">
+                              <p>{{item.leader.name}}</p>
+                            </td>
+                            <td class="column04" *ngIf="dataColumnOption[3].isCheck">
+                              <p>{{item.date | date: 'MM/dd/yyyy'}}</p>
+                            </td>
+                            <td class="column05" *ngIf="dataColumnOption[4].isCheck">
+                              <p>{{item.notes}}</p>
+                            </td>
+                            <td class="column06" *ngIf="dataColumnOption[5].isCheck">
+                              <p>{{item.attendees}}</p>
+                            </td>
+                            <td class="column07">
+                              <a href="javascript:;" class="icon-arrow mix-xy" (click)="showContentTableFunc($event)">
+                                <img class="img01" src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                                <img class="img02" src="assets/i/symbols-icon-blue-expanded.png" alt="IMG">
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- end /part-one -->
+                    <div class="part-two">
+                      <div class="subtable">
+                        <div class="first-group-table">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th class="column01">
+                                  <a #titleChildCol href="javascript:;" class="title ver-y" (click)="clickSortByChildTable(item, 'time', $event)">
+                                    <span class="name">Sign-in Time</span>
+                                    <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                                    <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                                  </a>
+                                </th>
+                                <th class="column02">
+                                  <a #titleChildCol href="javascript:;" class="title ver-y" (click)="clickSortByChildTable(item, 'attendee', $event)">
+                                    <span class="name">Attendee</span>
+                                    <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                                    <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                                  </a>
+                                </th>
+                                <th class="column03">
+                                  <a #titleChildCol href="javascript:;" class="title ver-y" (click)="clickSortByChildTable(item, 'email', $event)">
+                                    <span class="name">Email</span>
+                                    <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                                    <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                                  </a>
+                                </th>
+                                <th class="column04">
+                                  <a #titleChildCol href="javascript:;" class="title ver-y" (click)="clickSortByChildTable(item, 'supervisor', $event)">
+                                    <span class="name">Supervisor</span>
+                                    <img class="arrow-down" src="assets/i/symbols-icon-grey-bottom.png" alt="IMG">
+                                    <img class="arrow-up" src="assets/i/symbols-icon-grey-top.png" alt="IMG">
+                                  </a>
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                        </div>
+                        <!-- end /first-group-table -->
+                        <div class="second-group-table">
+                          <table>
+                            <tbody>
+                              <tr *ngFor="let child of item.tableChild">
+                                <td class="column01">
+                                  <p>{{child.time | date: 'HH:mm a'}}</p>
+                                </td>
+                                <td class="column02">
+                                  <p>{{child.attendee}}</p>
+                                </td>
+                                <td class="column03">
+                                  <a href="javascript:;" class="main-email">{{child.email}}</a>
+                                </td>
+                                <td class="column04">
+                                  <p>{{child.supervisor}}</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <!-- end /first-group-table -->
+                      </div>
+                      <!-- end /subtable -->
+                    </div>
+                    <!-- end /part-two -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- end /big-group-three -->
+          <div class="big-group-four" *ngIf="arrayFilter">
+            <div class="left-group ver-y">
+              <div class="ddown-here" *ngIf="dataFilterAction">
+                <app-dropdown #dropdownEl [listDropdown]="dataFilterAction.numberPages" [type]="'number'" [selectOption]="numberPage" (callbaclSelectDropdown)="selectNumberPage($event)"
+                  [dropdownEls]="dropdownEls"></app-dropdown>
+              </div>
+              <p>Rows / Page</p>
+            </div>
+            <!-- end /left-group -->
+            <div class="right-group" *ngIf="arrayFilter">
+              <p>{{pager.startIndex + 1}}-{{pager.endIndex + 1}} of {{arrayFilter.length}}</p>
+              <div class="list-icons" *ngIf="pager.pages && pager.pages.length">
+                <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)">
+                  <img src="assets/i/symbols-icon-grey-first.png" alt="IMG">
+                </a>
+                <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)">
+                  <img src="assets/i/symbols-icon-grey-left.png" alt="IMG">
+                </a>
+                <a href="javascript:;" class="icon-arrow" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)">
+                  <img src="assets/i/symbols-icon-grey-right.png" alt="IMG">
+                </a>
+                <a href="javascript:;" class="icon-arrow last" [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)">
+                  <img src="assets/i/symbols-icon-grey-last.png" alt="IMG">
+                </a>
+              </div>
+              <!-- end /list-icons -->
+            </div>
+            <!-- end /right-group -->
+          </div>
+          <!-- end /big-group-four -->
+        </div>
+        <!-- end /bottom-content -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end /container -->
+<app-left-aside *ngIf="!showMenuHeader"></app-left-aside>
